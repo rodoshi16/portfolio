@@ -1,0 +1,36 @@
+.app {
+  min-height: 100vh;
+  background: var(--bg-primary);
+}
+
+main {
+  position: relative;
+}
+
+section {
+  min-height: 100vh;
+  padding: 120px 5% 80px;
+  position: relative;
+  scroll-margin-top: 80px;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.5px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-color),
+    transparent
+  );
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 100px 4% 60px;
+  }
+}

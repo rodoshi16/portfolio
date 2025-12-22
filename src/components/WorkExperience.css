@@ -1,0 +1,240 @@
+.work-experience-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-header {
+  margin-bottom: 80px;
+  padding-top: 40px;
+}
+
+.section-number {
+  font-size: 14px;
+  font-weight: 500;
+  color: #86868b;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: clamp(48px, 7vw, 80px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  margin-bottom: 16px;
+  color: #f5f5f7;
+  line-height: 1.1;
+}
+
+.section-subtitle {
+  font-size: clamp(18px, 2.5vw, 24px);
+  color: #86868b;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.projects-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.project-selector {
+  display: flex;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 4px;
+  overflow-x: auto;
+}
+
+.project-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: transparent;
+  border: none;
+  color: #86868b;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  white-space: nowrap;
+  min-width: 200px;
+}
+
+.project-tab:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #f5f5f7;
+}
+
+.project-tab.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f5f5f7;
+}
+
+.tab-number {
+  font-size: 14px;
+  font-weight: 500;
+  color: #515154;
+  font-family: 'JetBrains Mono', monospace;
+  min-width: 24px;
+}
+
+.project-tab.active .tab-number {
+  color: #00d4ff;
+}
+
+.tab-title {
+  font-weight: 500;
+}
+
+.project-detail {
+  background: rgba(15, 15, 15, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 48px;
+  backdrop-filter: blur(20px);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 48px;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.project-title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 600;
+  color: #f5f5f7;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.project-period {
+  font-size: 16px;
+  color: #86868b;
+  font-weight: 400;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-tag {
+  padding: 6px 12px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 6px;
+  font-size: 13px;
+  color: #00d4ff;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #86868b;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.section-text {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #f5f5f7;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.impact-card {
+  padding: 32px;
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.impact-card:hover {
+  background: rgba(0, 212, 255, 0.08);
+  border-color: rgba(0, 212, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.impact-value {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  color: #00d4ff;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.impact-metric {
+  font-size: 14px;
+  font-weight: 500;
+  color: #f5f5f7;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.impact-description {
+  font-size: 14px;
+  color: #86868b;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .project-selector {
+    flex-direction: column;
+  }
+  
+  .project-tab {
+    width: 100%;
+  }
+  
+  .project-detail {
+    padding: 32px 24px;
+  }
+  
+  .project-header {
+    flex-direction: column;
+  }
+  
+  .impact-grid {
+    grid-template-columns: 1fr;
+  }
+}
