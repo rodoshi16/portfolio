@@ -1,0 +1,152 @@
+.mini-me-photo-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mini-me-photo-container.large {
+  width: 200px;
+  height: 250px;
+}
+
+.mini-me-photo-container.small {
+  width: 48px;
+  height: 60px;
+}
+
+.photo-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mini-me-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+  transition: all 0.3s ease;
+}
+
+.photo-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(124, 58, 237, 0.2));
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: 700;
+  color: #00d4ff;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.mini-me-photo-container.large .photo-fallback {
+  font-size: 64px;
+}
+
+.mini-me-photo-container.small .photo-fallback {
+  font-size: 24px;
+}
+
+/* Glowing orb positioned near hand area */
+.orb-container {
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+  width: 60px;
+  height: 60px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.mini-me-photo-container.small .orb-container {
+  width: 20px;
+  height: 20px;
+  bottom: 15%;
+  left: 10%;
+}
+
+.orb-outer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.3) 0%, transparent 70%);
+  filter: blur(12px);
+  animation: orbPulse 3s ease-in-out infinite;
+}
+
+.orb-middle {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  top: 10%;
+  left: 10%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.4) 0%, transparent 70%);
+  filter: blur(8px);
+}
+
+.orb-core {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 25%;
+  left: 25%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 50%, #00d4ff 100%);
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.3);
+  animation: orbRotate 4s linear infinite;
+}
+
+.orb-shine {
+  position: absolute;
+  width: 30%;
+  height: 40%;
+  top: 20%;
+  left: 30%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  filter: blur(2px);
+}
+
+@keyframes orbPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes orbRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.mini-me-photo-container.large:hover .mini-me-photo {
+  transform: scale(1.05);
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.4);
+}
+
+.mini-me-photo-container.large:hover .orb-container {
+  transform: scale(1.1);
+}
+

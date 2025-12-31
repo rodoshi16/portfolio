@@ -24,43 +24,11 @@
 
 .avatar-container {
   position: relative;
-  width: 120px;
-  height: 120px;
-}
-
-.avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  border: 2px solid rgba(0, 212, 255, 0.5);
+  width: 200px;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--bg-primary);
-  position: relative;
-  z-index: 2;
-  font-family: 'JetBrains Mono', monospace;
-  transition: all 0.4s ease;
-  box-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
-  animation: pulse 3s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    box-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 60px rgba(0, 212, 255, 0.5);
-  }
-}
-
-.avatar:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 60px rgba(0, 212, 255, 0.6);
-  border-color: var(--accent-primary);
 }
 
 .toggle-text {
@@ -103,19 +71,12 @@
 }
 
 .avatar-small {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  border: 1px solid rgba(0, 212, 255, 0.5);
+  width: 48px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--bg-primary);
-  font-family: 'JetBrains Mono', monospace;
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+  overflow: visible;
 }
 
 .chat-header-info h3 {

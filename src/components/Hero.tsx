@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
-import { useInView } from 'framer-motion'
+import rodoshiPhoto from '../assets/610BA1F6-C724-45F8-9A4A-EC03889CD0E3_1_105_c.jpeg'
 import './Hero.css'
 
 export default function Hero() {
@@ -15,6 +15,15 @@ export default function Hero() {
 
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
   const y = useTransform(scrollYProgress, [0, 0.5], [0, -100])
+
+  const highlights = [
+    'Former Software Engineer Intern @Magna International',
+    '2x Hackathon Winner',
+    '3D printed prosthetic project featured on Global News',
+    'Built and shipped software in the industry impacting 7+ engineers, boosting data accuracy and operational efficiency',
+    'Mentored students at Hackathons and Coding workshops',
+    'Leadership involvement: Project Lead @Engineers Without Borders, Mentor @WISE, Externals Associate @IEEE_UofT, Residence Don @UofT'
+  ]
 
   const metrics = [
     { label: 'Time Reduction', before: 300, after: 5, unit: 'seconds', description: 'Operator logging time' },
@@ -63,95 +72,143 @@ export default function Hero() {
         className="hero-content"
         style={{ opacity, y }}
       >
-        <motion.div
-          className="hero-intro"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          <div className="intro-badge">Software Engineer</div>
-          <div className="intro-location">Magna International · Autonomous Systems</div>
-        </motion.div>
+        {/* Top Section - Name and Intro */}
+        <div className="hero-top">
+          <motion.div
+            className="hero-intro"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <div className="intro-badge">Software Engineer</div>
+            <div className="intro-location">Magna International · Autonomous Systems</div>
+          </motion.div>
 
-        <motion.h1
-          className="hero-name"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-        >
-          Rodoshi Mondal
-        </motion.h1>
+          <motion.h1
+            className="hero-name"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          >
+            Rodoshi Mondal
+          </motion.h1>
 
-        <motion.p
-          className="hero-statement"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-        >
-          Building production software that engineers rely on during 
-          <span className="highlight"> live self-driving vehicle testing</span>
-        </motion.p>
+          <motion.p
+            className="hero-statement"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
+            Building production software that engineers rely on during 
+            <span className="highlight"> live self-driving vehicle testing</span>
+          </motion.p>
+        </div>
 
-        <motion.div
-          className="impact-visualization"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-        >
-          <div className="metric-display">
-            <div className="metric-label">{current.label}</div>
-            <div className="metric-comparison">
-              <div className="metric-before">
-                <div className="metric-value">{current.before}</div>
-                <div className="metric-unit">{current.unit}</div>
-              </div>
-              <div className="metric-arrow">→</div>
-              <div className="metric-after">
-                <div className="metric-value highlight-value">{countUp.value}</div>
-                <div className="metric-unit">{current.unit}</div>
-              </div>
-            </div>
-            <div className="metric-description">{current.description}</div>
-          </div>
-
-          <div className="metric-indicators">
-            {metrics.map((_, index) => (
-              <button
-                key={index}
-                className={`indicator ${index === currentMetric ? 'active' : ''}`}
-                onClick={() => setCurrentMetric(index)}
+        {/* Main Content - Photo, Metrics, Highlights */}
+        <div className="hero-main">
+          {/* Left - Photo */}
+          <motion.div
+            className="hero-photo-section"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            <div className="photo-frame">
+              <img
+                src={rodoshiPhoto}
+                alt="Rodoshi Mondal"
+                className="hero-photo"
               />
-            ))}
-          </div>
-        </motion.div>
+            </div>
+          </motion.div>
 
-        <motion.div
-          className="hero-stats"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
-          <div className="stat-item">
-            <div className="stat-number">3</div>
-            <div className="stat-label">Projects Shipped</div>
+          {/* Center - Metrics and Stats */}
+          <div className="hero-center-section">
+            <motion.div
+              className="impact-visualization"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+            >
+              <div className="metric-display">
+                <div className="metric-label">{current.label}</div>
+                <div className="metric-comparison">
+                  <div className="metric-before">
+                    <div className="metric-value">{current.before}</div>
+                    <div className="metric-unit">{current.unit}</div>
+                  </div>
+                  <div className="metric-arrow">→</div>
+                  <div className="metric-after">
+                    <div className="metric-value highlight-value">{countUp.value}</div>
+                    <div className="metric-unit">{current.unit}</div>
+                  </div>
+                </div>
+                <div className="metric-description">{current.description}</div>
+              </div>
+
+              <div className="metric-indicators">
+                {metrics.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`indicator ${index === currentMetric ? 'active' : ''}`}
+                    onClick={() => setCurrentMetric(index)}
+                  />
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="hero-stats"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+            >
+              <div className="stat-item">
+                <div className="stat-number">3</div>
+                <div className="stat-label">Projects Shipped</div>
+              </div>
+              <div className="stat-divider" />
+              <div className="stat-item">
+                <div className="stat-number">7+</div>
+                <div className="stat-label">Engineers Impacted</div>
+              </div>
+              <div className="stat-divider" />
+              <div className="stat-item">
+                <div className="stat-number">2x</div>
+                <div className="stat-label">Hackathon Winner</div>
+              </div>
+            </motion.div>
           </div>
-          <div className="stat-divider" />
-          <div className="stat-item">
-            <div className="stat-number">7+</div>
-            <div className="stat-label">Engineers Impacted</div>
-          </div>
-          <div className="stat-divider" />
-          <div className="stat-item">
-            <div className="stat-number">2x</div>
-            <div className="stat-label">Hackathon Winner</div>
-          </div>
-        </motion.div>
+
+          {/* Right - Highlights */}
+          <motion.div
+            className="hero-highlights-section"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            <div className="highlights-label">Highlights</div>
+            <ul className="highlights-list">
+              {highlights.map((highlight, index) => (
+                <motion.li
+                  key={index}
+                  className="highlight-item"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.7 + index * 0.05 }}
+                >
+                  {highlight}
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
 
         <motion.div
           className="scroll-hint"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
+          transition={{ delay: 1.5, duration: 0.8 }}
         >
           <div className="scroll-text">Explore Work</div>
           <motion.div

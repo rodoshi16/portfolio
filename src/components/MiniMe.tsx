@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useRef, useEffect } from 'react'
 import { FaPaperPlane, FaUser, FaRobot, FaTimes } from 'react-icons/fa'
+import MiniMePhoto from './MiniMePhoto'
 import './MiniMe.css'
 
 interface Message {
@@ -111,9 +112,7 @@ export default function MiniMe() {
             whileTap={{ scale: 0.98 }}
           >
             <div className="avatar-container">
-              <div className="avatar">
-                <span>RM</span>
-              </div>
+              <MiniMePhoto size="large" />
             </div>
             <span className="toggle-text">Start Conversation</span>
           </motion.button>
@@ -127,7 +126,7 @@ export default function MiniMe() {
             <div className="chat-header">
               <div className="chat-header-info">
                 <div className="avatar-small">
-                  <span>RM</span>
+                  <MiniMePhoto size="small" />
                 </div>
                 <div>
                   <h3>Assistant</h3>
