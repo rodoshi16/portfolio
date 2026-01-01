@@ -20,12 +20,12 @@ export default function MagnaExperience() {
   const overallComments = `Excellent work this summer Rodoshi, thank you so much for all the hard work you put in over this term. We could not have done any of this without you and will get everything recording as soon as possible! These systems will get integrated into our daily operations for a long time!`
 
   const strengthsAndAccomplishments = [
-    'Strong technical skills in full-stack development',
-    'Excellent problem-solving and critical thinking abilities',
-    'Proactive in identifying and implementing process improvements',
-    'Collaborative team player with effective communication skills',
-    'Delivered projects on time with high quality standards',
-    'Quick learner who adapted well to new technologies and frameworks'
+    'Ability to work independently in a low structure work environment',
+    'Ability to learn new topics and skills quickly and thoroughly',
+    'Ability to think of a whole project and break it down into achievable milestones',
+    'Technical knowledge in computer science and complex algorithms',
+    'Learned backend integrations to support databasing recorded and generated data',
+    'Developed GUI and app for self-driving bot training and data collection'
   ]
 
   return (
@@ -139,7 +139,7 @@ export default function MagnaExperience() {
             viewport={{ once: true }}
             transition={{ delay: 0.8, duration: 0.6 }}
           >
-            <div className="feedback-section-title">Strengths & Accomplishments</div>
+            <div className="feedback-section-title">Strengths & Accomplishments identified by Team</div>
             <div className="strengths-grid">
               {strengthsAndAccomplishments.map((strength, index) => (
                 <motion.div
