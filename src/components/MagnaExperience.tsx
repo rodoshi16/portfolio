@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import magnaImage from '../magna.jpg'
-import managerFeedback from '../assets/600A01D5-7444-4088-90DC-933251799D54.jpeg'
 import './MagnaExperience.css'
 
 export default function MagnaExperience() {
@@ -16,6 +15,18 @@ export default function MagnaExperience() {
   ]
 
   const skills = ['Node.js', 'Express', 'TypeScript', 'React.js', 'React Native', 'Azure', 'BigQuery']
+
+  // Manager feedback content - replace with actual text from your feedback
+  const overallComments = `Excellent work this summer Rodoshi, thank you so much for all the hard work you put in over this term. We could not have done any of this without you and will get everything recording as soon as possible! These systems will get integrated into our daily operations for a long time!`
+
+  const strengthsAndAccomplishments = [
+    'Strong technical skills in full-stack development',
+    'Excellent problem-solving and critical thinking abilities',
+    'Proactive in identifying and implementing process improvements',
+    'Collaborative team player with effective communication skills',
+    'Delivered projects on time with high quality standards',
+    'Quick learner who adapted well to new technologies and frameworks'
+  ]
 
   return (
     <div ref={containerRef} className="magna-experience-container">
@@ -104,15 +115,48 @@ export default function MagnaExperience() {
           transition={{ delay: 0.6, duration: 0.8 }}
         >
           <div className="section-label">Manager Feedback</div>
-          <div className="feedback-content">
-            <div className="feedback-image-wrapper">
-              <img
-                src={managerFeedback}
-                alt="Manager Feedback"
-                className="feedback-image"
-              />
+          
+          {/* Overall Comments */}
+          <motion.div
+            className="feedback-overall-section"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+          >
+            <div className="feedback-section-title">Supervisior's overall comments</div>
+            <div className="feedback-quote">
+              <div className="quote-mark">"</div>
+              <p className="feedback-text">{overallComments}</p>
             </div>
-          </div>
+          </motion.div>
+
+          {/* Strengths & Accomplishments */}
+          <motion.div
+            className="feedback-strengths-section"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+          >
+            <div className="feedback-section-title">Strengths & Accomplishments</div>
+            <div className="strengths-grid">
+              {strengthsAndAccomplishments.map((strength, index) => (
+                <motion.div
+                  key={index}
+                  className="strength-card"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.85 + index * 0.05, duration: 0.4 }}
+                  whileHover={{ scale: 1.02, y: -4 }}
+                >
+                  <div className="strength-icon">✓</div>
+                  <p className="strength-text">{strength}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </div>
