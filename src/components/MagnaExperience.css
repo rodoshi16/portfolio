@@ -20,6 +20,7 @@
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   text-decoration: none;
   transition: all 0.3s ease;
+  position: relative;
   z-index: 10;
 }
 

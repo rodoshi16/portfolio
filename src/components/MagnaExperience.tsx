@@ -1,11 +1,15 @@
 import { motion } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import magnaImage from '../magna.jpg'
 import './MagnaExperience.css'
 
 export default function MagnaExperience() {
   const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const bullets = [
     'Built and deployed a client-server, event-driven web application on Azure, including the database schema design and a BigQuery-based cloud data layer to enable real-time logging of autonomous robot disengagements.',
