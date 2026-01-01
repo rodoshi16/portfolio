@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './components/Home'
 import MagnaExperience from './components/MagnaExperience'
+import DisengagementLogger from './components/DisengagementLogger'
 import Navigation from './components/Navigation'
 import './App.css'
 
@@ -14,6 +15,12 @@ function App() {
             <div className="magna-page-wrapper">
               <Navigation activeSection="" />
               <MagnaExperience />
+            </div>
+          } />
+          <Route path="/disengagement-logger" element={
+            <div className="magna-page-wrapper">
+              <Navigation activeSection="" />
+              <DisengagementLogger />
             </div>
           } />
         </Routes>

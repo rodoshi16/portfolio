@@ -76,6 +76,11 @@ export default function MagnaExperience() {
                 transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
               >
                 {bullet}
+                {index === 0 && (
+                  <Link to="/disengagement-logger" className="project-link-button">
+                    View Project Details →
+                  </Link>
+                )}
               </motion.li>
             ))}
           </ul>
