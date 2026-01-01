@@ -49,3 +49,5 @@ export default function MiniMePhoto({ size = 'large' }: { size?: 'large' | 'smal
   )
 }
 
+
+

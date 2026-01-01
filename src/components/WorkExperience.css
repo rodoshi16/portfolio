@@ -162,12 +162,31 @@
   font-family: 'JetBrains Mono', monospace;
 }
 
-.section-text {
+.section-text,
+.detail-text {
   font-size: 18px;
   line-height: 1.7;
   color: #f5f5f7;
   letter-spacing: -0.01em;
   font-weight: 400;
+}
+
+.project-company-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: #86868b;
+  font-weight: 400;
+}
+
+.project-company {
+  color: #00d4ff;
+  font-weight: 500;
+}
+
+.project-separator {
+  color: #515154;
 }
 
 .impact-grid {
@@ -215,6 +234,30 @@
   font-size: 14px;
   color: #86868b;
   font-weight: 400;
+}
+
+.view-full-experience-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  padding: 16px 32px;
+  background: transparent;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 8px;
+  color: #00d4ff;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-full-experience-button:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.5);
+  transform: translateX(4px);
 }
 
 @media (max-width: 768px) {

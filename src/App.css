@@ -29,6 +29,11 @@ section::before {
   );
 }
 
+.magna-page-wrapper {
+  min-height: 100vh;
+  background: #000000;
+}
+
 @media (max-width: 768px) {
   section {
     padding: 100px 4% 60px;

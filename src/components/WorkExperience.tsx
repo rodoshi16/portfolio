@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './WorkExperience.css'
 
 interface Project {
   title: string
+  company: string
+  period: string
   problem: string
   solution: string
   impact: {
@@ -12,45 +15,51 @@ interface Project {
     description: string
   }[]
   tech: string[]
-  period: string
+  link?: string
 }
 
 const projects: Project[] = [
   {
     title: 'Disengagement Logger',
-    problem: 'Engineers manually logging vehicle disengagements during live testing took 5 minutes per entry, creating bottlenecks and reducing testing efficiency.',
-    solution: 'Architected a session-based workflow system supporting unlimited disengagements per trip. Built with React + TypeScript, integrated Azure MSAL SSO, and designed a safety-first UI optimized for operator use during live vehicle testing.',
+    company: 'Magna International',
+    period: 'Jun 2025 - Aug 2025',
+    problem: 'Engineers were spending 5 minutes manually logging vehicle disengagements during live self-driving tests, creating bottlenecks and reducing testing efficiency.',
+    solution: 'Developed and deployed a multi-page React + TypeScript web application with session-based workflows supporting unlimited disengagements per trip. Implemented Azure MSAL SSO for enterprise security and designed a safety-first UI with large buttons and visual cues.',
     impact: [
       { metric: 'Time Reduction', value: '99.8%', description: '5 minutes → 5 seconds' },
       { metric: 'Accuracy', value: '90%', description: 'Improvement vs manual tracking' },
       { metric: 'Reaction Time', value: '30%', description: 'Faster intervention response' },
     ],
     tech: ['React', 'TypeScript', 'Azure MSAL', 'Node.js', 'Express'],
-    period: 'Jun 2025 - Aug 2025'
+    link: '/magna-experience'
   },
   {
-    title: 'Robot Delivery Training App',
-    problem: 'Self-driving bot training relied on paper worksheets and manual Word table creation, making sessions less engaging and performance tracking difficult.',
-    solution: 'Developed an Android mobile application that digitizes training workflows. Integrated with scheduling system via unique game pins, designed role-specific task flows, and gamified sessions with randomized buffs/debuffs to create realistic training scenarios.',
+    title: 'Robot Delivery App',
+    company: 'Magna International',
+    period: 'Jun 2025 - Aug 2025',
+    problem: 'Self-driving bot training relied on paper worksheets and manual Word table creation, making sessions less engaging and harder to track performance.',
+    solution: 'Built an Android-compatible mobile app that digitizes training workflows. Integrated with scheduling system via unique game pins, designed role-specific task flows (pickup, dropoff, maps, ETAs), and gamified sessions with randomized buffs/debuffs.',
     impact: [
       { metric: 'Users', value: '7+', description: 'Engineers using platform' },
       { metric: 'Automation', value: '100%', description: 'Manual processes eliminated' },
       { metric: 'Engagement', value: '↑', description: 'Gamified training sessions' },
     ],
     tech: ['React Native', 'Android', 'Google BigQuery', 'Maps API'],
-    period: 'Jun 2025 - Aug 2025'
+    link: '/magna-experience'
   },
   {
     title: 'Randomized Schedule Generator',
-    problem: 'Manual creation of randomized multi-dropoff routes was time-consuming and limited testing scenario diversity.',
-    solution: 'Built a full-stack application leveraging Fisher-Yates algorithm for randomization and Haversine formula for geographic distance calculations. Architected end-to-end solution with Node.js + Express backend and React frontend.',
+    company: 'Magna International',
+    period: 'Jun 2025 - Aug 2025',
+    problem: 'Manual creation of randomized multi-dropoff routes was time-consuming and prone to human error, limiting testing scenario diversity.',
+    solution: 'Built a full-stack application leveraging Fisher-Yates algorithm for randomization and Haversine formula for distance calculations. Architected end-to-end solution with Node.js + Express backend and React frontend.',
     impact: [
       { metric: 'Time Saved', value: '80%', description: 'Reduction in manual work' },
       { metric: 'Routes', value: '∞', description: 'Unlimited generation' },
       { metric: 'Optimization', value: '✓', description: 'Geographic distance calc' },
     ],
     tech: ['Node.js', 'Express', 'React', 'Fisher-Yates', 'Haversine'],
-    period: 'Jun 2025 - Aug 2025'
+    link: '/magna-experience'
   }
 ]
 
@@ -95,7 +104,11 @@ export default function WorkExperience() {
           <div className="project-header">
             <div>
               <h3 className="project-title">{projects[selectedProject].title}</h3>
-              <div className="project-period">{projects[selectedProject].period}</div>
+              <div className="project-company-info">
+                <span className="project-company">{projects[selectedProject].company}</span>
+                <span className="project-separator">·</span>
+                <span className="project-period">{projects[selectedProject].period}</span>
+              </div>
             </div>
             <div className="project-tech">
               {projects[selectedProject].tech.map((tech, i) => (
@@ -106,13 +119,13 @@ export default function WorkExperience() {
 
           <div className="project-content">
             <div className="content-section">
-              <div className="section-label">Problem</div>
-              <p className="section-text">{projects[selectedProject].problem}</p>
+              <div className="detail-label">Problem</div>
+              <p className="detail-text">{projects[selectedProject].problem}</p>
             </div>
 
             <div className="content-section">
-              <div className="section-label">Solution</div>
-              <p className="section-text">{projects[selectedProject].solution}</p>
+              <div className="detail-label">Solution</div>
+              <p className="detail-text">{projects[selectedProject].solution}</p>
             </div>
 
             <div className="impact-grid">
@@ -125,6 +138,15 @@ export default function WorkExperience() {
               ))}
             </div>
           </div>
+
+          {projects[selectedProject].link && (
+            <Link
+              to={projects[selectedProject].link || '#'}
+              className="view-full-experience-button"
+            >
+              View Full Magna Experience →
+            </Link>
+          )}
         </motion.div>
       </div>
     </div>
