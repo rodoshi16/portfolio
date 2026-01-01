@@ -61,22 +61,18 @@ export default function DisengagementLogger() {
       >
         <div className="hero-background">
           <div className="hero-video-overlay">
-            {/* Replace with your autonomous vehicle testing video */}
+            {/* Replace src with your autonomous vehicle testing video - add video file to public folder */}
             <video
               className="hero-video"
               autoPlay
               loop
               muted
               playsInline
-              poster="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+              preload="auto"
             >
-              <source src="https://videos.pexels.com/video-files/3045163/3045163-hd_1920_1080_30fps.mp4" type="video/mp4" />
-              {/* Fallback image if video doesn't load - replace with your autonomous vehicle image */}
-              <img 
-                src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
-                alt="Autonomous vehicle testing"
-                className="hero-fallback-image"
-              />
+              {/* Example: <source src="/autonomous-vehicle-video.mp4" type="video/mp4" /> */}
+              {/* For now using placeholder - replace with your video */}
+              <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
             </video>
           </div>
           <div className="hero-grid"></div>
@@ -399,7 +395,6 @@ export default function DisengagementLogger() {
             Engineering Principles
           </motion.h2>
           <motion.p
-            className="engineering-subtitle"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
