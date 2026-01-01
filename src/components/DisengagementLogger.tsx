@@ -60,6 +60,25 @@ export default function DisengagementLogger() {
         style={{ opacity: heroOpacity, scale: heroScale }}
       >
         <div className="hero-background">
+          <div className="hero-video-overlay">
+            {/* Replace with your autonomous vehicle testing video */}
+            <video
+              className="hero-video"
+              autoPlay
+              loop
+              muted
+              playsInline
+              poster="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+            >
+              <source src="https://videos.pexels.com/video-files/3045163/3045163-hd_1920_1080_30fps.mp4" type="video/mp4" />
+              {/* Fallback image if video doesn't load - replace with your autonomous vehicle image */}
+              <img 
+                src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                alt="Autonomous vehicle testing"
+                className="hero-fallback-image"
+              />
+            </video>
+          </div>
           <div className="hero-grid"></div>
           <div className="hero-gradient"></div>
         </div>
@@ -88,28 +107,15 @@ export default function DisengagementLogger() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            Real-time logging system reducing operator logging time from 5 minutes to 5 seconds
+            A production system architected for real-time data collection during autonomous vehicle testing
           </motion.p>
           <motion.div
-            className="hero-stats"
+            className="hero-description"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <div className="stat-item">
-              <div className="stat-value">99.8%</div>
-              <div className="stat-label">Faster</div>
-            </div>
-            <div className="stat-divider"></div>
-            <div className="stat-item">
-              <div className="stat-value">90%</div>
-              <div className="stat-label">More Accurate</div>
-            </div>
-            <div className="stat-divider"></div>
-            <div className="stat-item">
-              <div className="stat-value">Real-time</div>
-              <div className="stat-label">Analytics</div>
-            </div>
+            <p>Built to eliminate manual logging bottlenecks and enable data-driven decision making</p>
           </motion.div>
         </div>
         <div className="scroll-indicator">
@@ -179,20 +185,20 @@ export default function DisengagementLogger() {
               transition={{ duration: 1, delay: 0.2 }}
             >
               <p className="story-text-large">
-                During live self-driving vehicle testing, engineers spent an average of <span className="text-highlight">5 minutes per disengagement</span> manually logging critical data points.
+                During live self-driving vehicle testing, engineers manually logged critical data points into Excel spreadsheets—a process that created bottlenecks and introduced errors at a critical stage of development.
               </p>
               <div className="problem-pain-points">
                 <div className="pain-point">
                   <div className="pain-icon">⚠️</div>
-                  <div className="pain-text">Human error compromised data accuracy</div>
+                  <div className="pain-text">Manual data entry introduced human error</div>
                 </div>
                 <div className="pain-point">
                   <div className="pain-icon">⏱️</div>
-                  <div className="pain-text">Bottlenecks reduced testing efficiency</div>
+                  <div className="pain-text">Time-intensive logging slowed down testing cycles</div>
                 </div>
                 <div className="pain-point">
                   <div className="pain-icon">📊</div>
-                  <div className="pain-text">No real-time analytics capability</div>
+                  <div className="pain-text">No way to analyze data in real-time</div>
                 </div>
               </div>
             </motion.div>
@@ -307,6 +313,14 @@ export default function DisengagementLogger() {
               transition={{ duration: 0.8 }}
               whileHover={{ scale: 1.05, y: -10 }}
             >
+              {/* Dashboard/analytics screenshot - replace with your actual UI */}
+              <div className="impact-visual-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                  alt="Analytics Dashboard"
+                  className="impact-visual-image"
+                />
+              </div>
               <div className="impact-icon">🚀</div>
               <div className="impact-value-large">99.8%</div>
               <div className="impact-metric-large">Time Reduction</div>

@@ -3,12 +3,16 @@
   background: #000000;
   position: relative;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .project-back-button {
   position: fixed;
   top: 120px;
-  left: 5%;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 100;
   display: inline-flex;
   align-items: center;
@@ -24,6 +28,8 @@
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   text-decoration: none;
   transition: all 0.3s ease;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .project-back-button:hover {
@@ -45,28 +51,101 @@
 .hero-background {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+  overflow: hidden;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0.3;
+  filter: grayscale(100%) brightness(0.3);
+}
+
+.hero-fallback-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0.3;
+  filter: grayscale(100%) brightness(0.3);
+}
+
+.hero-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(0, 212, 255, 0.08) 0%, transparent 50%);
+  animation: pulseGlow 8s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
 }
 
 .hero-grid {
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: gridMove 20s linear infinite;
+    linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 25s linear infinite;
+  opacity: 0.6;
 }
 
 @keyframes gridMove {
   0% { transform: translate(0, 0); }
-  100% { transform: translate(50px, 50px); }
+  100% { transform: translate(60px, 60px); }
 }
 
 .hero-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.3) 50%, #000000 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.4) 50%, #000000 100%);
+}
+
+/* Floating particles effect */
+.hero-background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(0, 212, 255, 0.3), transparent),
+    radial-gradient(2px 2px at 60px 70px, rgba(0, 212, 255, 0.25), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(0, 212, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(0, 212, 255, 0.25), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(0, 212, 255, 0.3), transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: floatParticles 20s linear infinite;
+  opacity: 0.4;
+}
+
+@keyframes floatParticles {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(200px, 100px); }
 }
 
 .hero-content {
@@ -135,40 +214,18 @@
   margin-right: auto;
 }
 
-.hero-stats {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 48px;
-  flex-wrap: wrap;
+.hero-description {
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-.stat-item {
-  text-align: center;
-}
-
-.stat-value {
-  font-size: clamp(32px, 5vw, 56px);
-  font-weight: 700;
-  color: #00d4ff;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-
-.stat-label {
-  font-size: 14px;
+.hero-description p {
+  font-size: clamp(18px, 2.5vw, 22px);
+  line-height: 1.6;
   color: #86868b;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.stat-divider {
-  width: 1px;
-  height: 60px;
-  background: rgba(255, 255, 255, 0.1);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: 0;
 }
 
 .scroll-indicator {
@@ -205,6 +262,9 @@
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .section-number-badge {
@@ -219,6 +279,7 @@
   font-family: 'JetBrains Mono', monospace;
   letter-spacing: 0.1em;
   margin-bottom: 32px;
+  text-align: center;
 }
 
 .section-title-large {
@@ -228,11 +289,35 @@
   color: #f5f5f7;
   margin: 0 0 80px 0;
   line-height: 1.1;
+  text-align: center;
 }
 
 /* Why Section */
 .why-section {
-  background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.8) 100%);
+  background: 
+    linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.8) 100%),
+    radial-gradient(circle at 30% 50%, rgba(255, 59, 48, 0.03) 0%, transparent 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+.why-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(45deg, transparent 30%, rgba(255, 59, 48, 0.02) 50%, transparent 70%);
+  background-size: 200% 200%;
+  animation: slideBg 15s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes slideBg {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
 }
 
 .problem-visualization {
@@ -240,6 +325,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
+  width: 100%;
 }
 
 .problem-timeline {
@@ -309,7 +395,7 @@
 }
 
 .timeline-time {
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 700;
   color: #f5f5f7;
   letter-spacing: -0.02em;
@@ -318,10 +404,12 @@
 
 .timeline-item.old .timeline-time {
   color: #ff3b30;
+  font-size: 28px;
 }
 
 .timeline-item.new .timeline-time {
   color: #00d4ff;
+  font-size: 28px;
 }
 
 .timeline-description {
@@ -372,13 +460,35 @@
 
 /* How Section */
 .how-section {
-  background: #000000;
+  background: 
+    #000000,
+    radial-gradient(circle at 70% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 60%);
+  position: relative;
+  overflow: hidden;
+}
+
+.how-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
+  animation: rotateGlow 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .architecture-showcase {
   display: flex;
   flex-direction: column;
   gap: 80px;
+  width: 100%;
 }
 
 .architecture-diagram {
@@ -387,14 +497,36 @@
   align-items: center;
   gap: 24px;
   padding: 60px;
-  background: rgba(0, 212, 255, 0.05);
+  background: 
+    rgba(0, 212, 255, 0.05),
+    radial-gradient(circle at center, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
   border: 1px solid rgba(0, 212, 255, 0.2);
   border-radius: 24px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.architecture-diagram::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+  animation: rotateSubtle 30s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotateSubtle {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .arch-layer {
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   padding: 40px;
   background: rgba(0, 0, 0, 0.4);
   border: 2px solid rgba(0, 212, 255, 0.3);
@@ -436,9 +568,16 @@
 }
 
 .solution-features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-direction: row;
   gap: 24px;
+  width: 100%;
+  justify-content: center;
+}
+
+.solution-features .feature-card {
+  flex: 1;
+  max-width: 320px;
 }
 
 .feature-card {
@@ -476,7 +615,22 @@
 
 /* Impact Section */
 .impact-section {
-  background: linear-gradient(180deg, #000000 0%, rgba(0, 212, 255, 0.03) 50%, #000000 100%);
+  background: 
+    linear-gradient(180deg, #000000 0%, rgba(0, 212, 255, 0.05) 50%, #000000 100%),
+    radial-gradient(ellipse at center, rgba(0, 212, 255, 0.06) 0%, transparent 70%);
+  position: relative;
+  overflow: hidden;
+}
+
+.impact-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(180deg, transparent, rgba(0, 212, 255, 0.03));
+  pointer-events: none;
 }
 
 .impact-showcase {
@@ -484,6 +638,7 @@
   gap: 40px;
   margin-bottom: 60px;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .impact-card-large {
@@ -496,6 +651,24 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+}
+
+.impact-visual-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.15;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.impact-visual-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(2px);
 }
 
 .impact-glow {
@@ -595,8 +768,48 @@
 
 /* Engineering Section */
 .engineering-section {
-  background: #000000;
+  background: 
+    #000000,
+    radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.03) 0%, transparent 80%);
   padding-bottom: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.engineering-section::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.04) 0%, transparent 70%);
+  filter: blur(60px);
+  animation: floatSlow 25s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.engineering-section::after {
+  content: '';
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.03) 0%, transparent 70%);
+  filter: blur(80px);
+  animation: floatSlowReverse 30s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+  50% { transform: translate(50px, -50px) scale(1.2); opacity: 0.8; }
+}
+
+@keyframes floatSlowReverse {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  50% { transform: translate(-50px, 50px) scale(1.1); opacity: 0.7; }
 }
 
 .engineering-subtitle {
@@ -611,6 +824,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 32px;
+  width: 100%;
 }
 
 .engineering-card-advanced {
