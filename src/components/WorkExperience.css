@@ -99,6 +99,26 @@
   font-weight: 400;
 }
 
+.view-details-hint {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 6px;
+  color: #00d4ff;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  width: fit-content;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.experience-link:hover .view-details-hint {
+  background: rgba(0, 212, 255, 0.15);
+  border-color: rgba(0, 212, 255, 0.5);
+  transform: translateX(4px);
+}
+
 @media (max-width: 768px) {
   .section-header {
     margin-bottom: 60px;
@@ -107,5 +127,10 @@
   .experience-image-wrapper {
     height: 300px;
     margin-bottom: 24px;
+  }
+
+  .view-details-hint {
+    width: 100%;
+    text-align: center;
   }
 }

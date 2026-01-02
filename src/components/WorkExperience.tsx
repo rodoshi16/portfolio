@@ -37,6 +37,7 @@ export default function WorkExperience() {
             <div className="company-name">Magna International</div>
             <div className="role-title">Software Engineer Intern</div>
             <div className="role-details">Autonomous Driving Team · Jun 2025 - Aug 2025</div>
+            <div className="view-details-hint">View Full Experience →</div>
           </div>
         </Link>
       </motion.div>

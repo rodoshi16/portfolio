@@ -33,6 +33,18 @@ section#hackathon-projects {
 section#personal-projects {
   min-height: auto;
   padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+section#leadership {
+  min-height: auto;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+section#volunteering {
+  min-height: auto;
+  padding-top: 20px;
   padding-bottom: 80px;
 }
 
