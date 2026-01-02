@@ -1,110 +1,152 @@
-import { motion } from 'framer-motion'
-import { FaEnvelope, FaLinkedin, FaGithub, FaArrowRight } from 'react-icons/fa'
+import { useState } from 'react'
+import { FaEnvelope, FaGithub, FaLinkedin, FaPaperPlane } from 'react-icons/fa'
 import './MiniMe.css'
 
-const contactLinks = [
-  {
-    icon: <FaEnvelope />,
-    label: 'Email',
-    href: 'mailto:rodoshi.mondal@mail.utoronto.ca',
-    text: 'rodoshi.mondal@mail.utoronto.ca',
-    description: 'Send me a message'
-  },
-  {
-    icon: <FaLinkedin />,
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/rodoshi-mondal-99249126b/',
-    text: 'rodoshi-mondal',
-    description: 'Connect professionally'
-  },
-  {
-    icon: <FaGithub />,
-    label: 'GitHub',
-    href: 'https://github.com/rodoshi16',
-    text: 'rodoshi16',
-    description: 'View my code'
-  }
-]
-
 export default function MiniMe() {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    
+    setIsSubmitting(false)
+    setIsSubmitted(true)
+    
+    // Reset form after 3 seconds
+    setTimeout(() => {
+      setIsSubmitted(false)
+      setName('')
+      setEmail('')
+      setMessage('')
+    }, 3000)
+  }
+
   return (
     <div className="mini-me-container">
-      <motion.div
-        className="section-header"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-      >
+      <div className="section-header">
         <div className="section-number">06</div>
         <h2 className="section-title">Get In Touch</h2>
-        <p className="section-subtitle">Let's build something extraordinary together</p>
-      </motion.div>
+        <p className="section-subtitle">Let's connect and discuss opportunities</p>
+      </div>
 
       <div className="contact-wrapper">
-        <motion.div
-          className="contact-intro"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          <p className="contact-message">
-            I'm always interested in discussing new opportunities, technical challenges, and innovative projects.
-          </p>
-          <div className="contact-availability">
-            <span className="availability-dot"></span>
-            <span>Open to Software Engineering opportunities for Summer 2025</span>
-          </div>
-        </motion.div>
-
-        <div className="contact-links-grid">
-          {contactLinks.map((link, index) => (
-            <motion.a
-              key={index}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-link-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 + index * 0.1, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-              whileHover={{ y: -8, scale: 1.02 }}
-            >
-              <div className="contact-card-background"></div>
-              <div className="contact-card-content">
-                <div className="contact-icon-wrapper">
-                  <div className="icon-inner">
-                    {link.icon}
-                  </div>
-                  <div className="icon-glow"></div>
-                </div>
-                <div className="contact-link-info">
-                  <div className="contact-link-label">{link.label}</div>
-                  <div className="contact-link-text">{link.text}</div>
-                  <div className="contact-link-description">{link.description}</div>
-                </div>
-                <div className="contact-link-arrow">
-                  <FaArrowRight />
-                </div>
+        <div className="contact-content-grid">
+          {/* Left: Interactive Contact Form */}
+          <div className="contact-form-section">
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="name">Name</label>
+                <input
+                  id="name"
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Your name"
+                  required
+                />
               </div>
-            </motion.a>
-          ))}
-        </div>
 
-        <motion.div
-          className="contact-footer"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-        >
-          <div className="footer-divider"></div>
-          <p className="contact-footer-text">
-            Looking forward to connecting with you
-          </p>
-        </motion.div>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="your.email@example.com"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="message">Message</label>
+                <textarea
+                  id="message"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Tell me about your project or opportunity..."
+                  rows={6}
+                  required
+                />
+              </div>
+
+              <button 
+                type="submit" 
+                className="submit-button"
+                disabled={isSubmitting || isSubmitted}
+              >
+                {isSubmitting ? (
+                  'Sending...'
+                ) : isSubmitted ? (
+                  'Message Sent!'
+                ) : (
+                  <>
+                    <FaPaperPlane />
+                    Send Message
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
+
+          {/* Right: Quick Links */}
+          <div className="contact-links-section">
+            <div className="quick-links-card">
+              <h3 className="links-title">Quick Links</h3>
+              <div className="social-links">
+                <a 
+                  href="mailto:rodoshi.mondal@mail.utoronto.ca" 
+                  className="social-link"
+                >
+                  <div className="social-icon email">
+                    <FaEnvelope />
+                  </div>
+                  <div className="social-info">
+                    <div className="social-label">Email</div>
+                    <div className="social-text">rodoshi.mondal@mail.utoronto.ca</div>
+                  </div>
+                </a>
+
+                <a 
+                  href="https://github.com/rodoshi16" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-link"
+                >
+                  <div className="social-icon github">
+                    <FaGithub />
+                  </div>
+                  <div className="social-info">
+                    <div className="social-label">GitHub</div>
+                    <div className="social-text">github.com/rodoshi16</div>
+                  </div>
+                </a>
+
+                <a 
+                  href="https://www.linkedin.com/in/rodoshi-mondal-99249126b/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-link"
+                >
+                  <div className="social-icon linkedin">
+                    <FaLinkedin />
+                  </div>
+                  <div className="social-info">
+                    <div className="social-label">LinkedIn</div>
+                    <div className="social-text">Connect with me</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

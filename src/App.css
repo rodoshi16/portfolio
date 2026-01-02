@@ -15,7 +15,9 @@ section {
 }
 
 section#hero {
-  padding-bottom: 40px;
+  min-height: auto;
+  padding: 0;
+  padding-bottom: 0;
 }
 
 section#work-experience {
