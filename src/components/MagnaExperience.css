@@ -140,25 +140,27 @@
 .project-link-button {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  margin-top: 16px;
-  padding: 10px 20px;
-  background: rgba(0, 212, 255, 0.1);
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 6px;
-  color: #00d4ff;
-  font-size: 14px;
-  font-weight: 500;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 16px 32px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #f5f5f7;
+  font-size: 16px;
+  font-weight: 600;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   text-decoration: none;
   transition: all 0.3s ease;
   width: fit-content;
+  position: relative;
 }
 
 .project-link-button:hover {
-  background: rgba(0, 212, 255, 0.15);
-  border-color: rgba(0, 212, 255, 0.5);
-  transform: translateX(4px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
 }
 
 /* Skills Section */

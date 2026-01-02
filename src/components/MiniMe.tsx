@@ -9,23 +9,23 @@ export default function MiniMe() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     
     // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    
-    // Reset form after 3 seconds
     setTimeout(() => {
-      setIsSubmitted(false)
-      setName('')
-      setEmail('')
-      setMessage('')
-    }, 3000)
+      setIsSubmitting(false)
+      setIsSubmitted(true)
+      
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setIsSubmitted(false)
+        setName('')
+        setEmail('')
+        setMessage('')
+      }, 3000)
+    }, 1000)
   }
 
   return (

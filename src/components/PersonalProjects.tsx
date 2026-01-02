@@ -56,7 +56,7 @@ export default function PersonalProjects() {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ delay: index * 0.15, duration: 0.8 }}
           >
-            <div className="project-image-wrapper">
+            <div className={`project-image-wrapper ${project.name === 'FraudIQ' ? 'with-border' : ''}`}>
               <img
                 src={project.image}
                 alt={project.name}

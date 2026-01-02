@@ -1,25 +1,25 @@
 .disengagement-container {
   min-height: 100vh;
+  padding: 120px 5% 80px;
   background: #000000;
   position: relative;
   overflow-x: hidden;
+}
+
+.disengagement-content {
+  max-width: 1000px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .project-back-button {
-  position: fixed;
-  top: 120px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 100;
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  margin-bottom: 40px;
   padding: 12px 24px;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px);
+  background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   color: #f5f5f7;
@@ -28,12 +28,12 @@
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   text-decoration: none;
   transition: all 0.3s ease;
-  max-width: 1400px;
-  margin: 0 auto;
+  position: relative;
+  z-index: 10;
 }
 
 .project-back-button:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.2);
   transform: translateX(-4px);
 }
@@ -41,7 +41,8 @@
 /* Hero Section - Full Screen */
 .hero-section {
   position: relative;
-  height: 100vh;
+  height: 70vh;
+  min-height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,12 +56,31 @@
   z-index: 0;
 }
 
-.hero-video-overlay {
+.hero-image-overlay {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.3;
+}
+
+.hero-robot-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(60%) brightness(0.4) contrast(1.2);
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 
 .hero-video {
@@ -70,9 +90,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.25;
+  opacity: 0.2;
   filter: grayscale(80%) brightness(0.2);
-  z-index: 0;
+  z-index: 1;
 }
 
 .hero-background::before {
@@ -146,37 +166,6 @@
   max-width: 1200px;
 }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  background: rgba(0, 212, 255, 0.1);
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 50px;
-  font-size: 13px;
-  font-weight: 500;
-  color: #00d4ff;
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 32px;
-  position: relative;
-}
-
-.badge-pulse {
-  width: 8px;
-  height: 8px;
-  background: #00d4ff;
-  border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.2); }
-}
-
 .hero-title {
   font-size: clamp(64px, 12vw, 140px);
   font-weight: 700;
@@ -187,10 +176,7 @@
 }
 
 .title-highlight {
-  background: linear-gradient(135deg, #00d4ff, #00a8cc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #00d4ff;
 }
 
 .hero-subtitle {
@@ -334,14 +320,14 @@
 /* Story Sections */
 .story-section {
   min-height: auto;
-  padding: 60px 5%;
+  padding: 60px 5% 40px 5%;
   position: relative;
   display: flex;
   align-items: center;
 }
 
 .section-container {
-  max-width: 1400px;
+  max-width: 1000px;
   margin: 0 auto;
   width: 100%;
   display: flex;
@@ -351,34 +337,32 @@
 
 .section-number-badge {
   display: inline-block;
-  padding: 8px 16px;
+  padding: 6px 12px;
   background: rgba(0, 212, 255, 0.1);
   border: 1px solid rgba(0, 212, 255, 0.3);
   border-radius: 6px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: #00d4ff;
   font-family: 'JetBrains Mono', monospace;
   letter-spacing: 0.1em;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
 .section-title-large {
-  font-size: clamp(56px, 8vw, 96px);
+  font-size: clamp(40px, 6vw, 64px);
   font-weight: 700;
   letter-spacing: -0.04em;
   color: #f5f5f7;
-  margin: 0 0 60px 0;
+  margin: 0 0 32px 0;
   line-height: 1.1;
   text-align: center;
 }
 
 /* Why Section */
 .why-section {
-  background: 
-    linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.8) 100%),
-    radial-gradient(circle at 30% 50%, rgba(255, 59, 48, 0.03) 0%, transparent 50%);
+  background: #000000;
   position: relative;
   overflow: hidden;
 }
@@ -405,20 +389,21 @@
 .problem-visualization {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 40px;
   align-items: center;
   width: 100%;
+  max-width: 100%;
 }
 
 .problem-timeline {
   position: relative;
-  padding: 60px 0;
+  padding: 20px 0;
 }
 
 .timeline-item {
   position: relative;
-  padding-left: 80px;
-  margin-bottom: 60px;
+  padding-left: 70px;
+  margin-bottom: 32px;
 }
 
 .timeline-item:last-child {
@@ -500,12 +485,12 @@
 }
 
 .story-text-large {
-  font-size: 28px;
-  line-height: 1.8;
+  font-size: 20px;
+  line-height: 1.6;
   color: #f5f5f7;
   letter-spacing: -0.01em;
   font-weight: 400;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 .text-highlight {
@@ -542,9 +527,7 @@
 
 /* How Section */
 .how-section {
-  background: 
-    #000000,
-    radial-gradient(circle at 70% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 60%);
+  background: #000000;
   position: relative;
   overflow: hidden;
 }
@@ -569,7 +552,7 @@
 .architecture-showcase {
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: 40px;
   width: 100%;
 }
 
@@ -577,13 +560,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
-  padding: 60px;
+  gap: 16px;
+  padding: 32px;
   background: 
     rgba(0, 212, 255, 0.05),
     radial-gradient(circle at center, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
   border: 1px solid rgba(0, 212, 255, 0.2);
-  border-radius: 24px;
+  border-radius: 16px;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -609,10 +592,10 @@
 .arch-layer {
   width: 100%;
   max-width: 800px;
-  padding: 40px;
+  padding: 24px;
   background: rgba(0, 0, 0, 0.4);
   border: 2px solid rgba(0, 212, 255, 0.3);
-  border-radius: 16px;
+  border-radius: 12px;
   text-align: center;
 }
 
@@ -674,7 +657,6 @@
 .feature-card:hover {
   background: rgba(0, 212, 255, 0.05);
   border-color: rgba(0, 212, 255, 0.3);
-  transform: translateY(-4px);
 }
 
 .feature-icon {
@@ -697,28 +679,15 @@
 
 /* Impact Section */
 .impact-section {
-  background: 
-    linear-gradient(180deg, #000000 0%, rgba(0, 212, 255, 0.05) 50%, #000000 100%),
-    radial-gradient(ellipse at center, rgba(0, 212, 255, 0.06) 0%, transparent 70%);
+  background: #000000;
   position: relative;
   overflow: hidden;
 }
 
-.impact-section::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 200px;
-  background: linear-gradient(180deg, transparent, rgba(0, 212, 255, 0.03));
-  pointer-events: none;
-}
-
 .impact-showcase {
   display: flex;
-  gap: 40px;
-  margin-bottom: 60px;
+  gap: 32px;
+  margin-bottom: 40px;
   flex-wrap: wrap;
   width: 100%;
 }
@@ -726,10 +695,10 @@
 .impact-card-large {
   flex: 1;
   min-width: 400px;
-  padding: 60px;
+  padding: 40px;
   background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 212, 255, 0.05));
   border: 2px solid rgba(0, 212, 255, 0.3);
-  border-radius: 24px;
+  border-radius: 16px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -904,16 +873,16 @@
 
 .engineering-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 24px;
   width: 100%;
 }
 
 .engineering-card-advanced {
-  padding: 40px;
+  padding: 28px;
   background: rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
+  border-radius: 16px;
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -921,7 +890,7 @@
 
 .engineering-card-advanced:hover {
   background: rgba(0, 0, 0, 0.6);
-  border-color: rgba(0, 212, 255, 0.4);
+  border-color: rgba(0, 212, 255, 0.3);
 }
 
 .card-accent {

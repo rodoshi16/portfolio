@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion'
 import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+// @ts-ignore
 import magnaImage from '../magna.jpg'
 import './MagnaExperience.css'
 
@@ -39,13 +39,7 @@ export default function MagnaExperience() {
           ← Back to Portfolio
         </Link>
         {/* Hero Image */}
-        <motion.div
-          className="magna-hero"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
+        <div className="magna-hero">
           <div className="magna-image-wrapper">
             <img
               src={magnaImage}
@@ -58,120 +52,63 @@ export default function MagnaExperience() {
             <h2 className="magna-role">Software Engineer Intern</h2>
             <p className="magna-team">Autonomous Driving Team</p>
           </div>
-        </motion.div>
+        </div>
 
         {/* Accomplishments */}
-        <motion.div
-          className="accomplishments-section"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-        >
+        <div className="accomplishments-section">
           <div className="section-label">Accomplishments</div>
           <ul className="bullets-list">
             {bullets.map((bullet, index) => (
-              <motion.li
-                key={index}
-                className="bullet-item"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
-              >
+              <li key={index} className="bullet-item">
                 {bullet}
-              </motion.li>
+              </li>
             ))}
           </ul>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.7, duration: 0.6 }}
-          >
+          <div>
             <Link to="/disengagement-logger" className="project-link-button">
               View Project Details →
             </Link>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Skills */}
-        <motion.div
-          className="skills-section"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-        >
+        <div className="skills-section">
           <div className="section-label">Technologies</div>
           <div className="skills-grid">
             {skills.map((skill, index) => (
-              <motion.span
-                key={index}
-                className="skill-badge"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 + index * 0.05, duration: 0.4 }}
-              >
+              <span key={index} className="skill-badge">
                 {skill}
-              </motion.span>
+              </span>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Manager Feedback */}
-        <motion.div
-          className="feedback-section"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-        >
+        <div className="feedback-section">
           <div className="section-label">Manager Feedback</div>
           
           {/* Overall Comments */}
-          <motion.div
-            className="feedback-overall-section"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.7, duration: 0.6 }}
-          >
+          <div className="feedback-overall-section">
             <div className="feedback-section-title">Supervisior's overall comments</div>
             <div className="feedback-quote">
               <div className="quote-mark">"</div>
               <p className="feedback-text">{overallComments}</p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Strengths & Accomplishments */}
-          <motion.div
-            className="feedback-strengths-section"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-          >
+          <div className="feedback-strengths-section">
             <div className="feedback-section-title">Strengths & Accomplishments identified by Team</div>
             <div className="strengths-grid">
               {strengthsAndAccomplishments.map((strength, index) => (
-                <motion.div
-                  key={index}
-                  className="strength-card"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.85 + index * 0.05, duration: 0.4 }}
-                  whileHover={{ scale: 1.02, y: -4 }}
-                >
+                <div key={index} className="strength-card">
                   <div className="strength-icon">✓</div>
                   <p className="strength-text">{strength}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </div>
   )

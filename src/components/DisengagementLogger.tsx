@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+// @ts-ignore
+import autonomousRobot from '../assets/Autonomous robot.png'
 import './DisengagementLogger.css'
 
 export default function DisengagementLogger() {
@@ -13,6 +15,10 @@ export default function DisengagementLogger() {
 
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
   const heroScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.95])
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const engineeringQuestions = [
     {
@@ -49,17 +55,25 @@ export default function DisengagementLogger() {
 
   return (
     <div ref={containerRef} className="disengagement-container">
-      <Link to="/magna-experience" className="project-back-button">
-        ← Back to Magna Experience
-      </Link>
+      <div className="disengagement-content">
+        <Link to="/magna-experience" className="project-back-button">
+          ← Back to Magna Experience
+        </Link>
 
-      {/* Hero Section - Full Screen Story Opening */}
+        {/* Hero Section - Full Screen Story Opening */}
       <motion.div 
         ref={heroRef}
         className="hero-section"
         style={{ opacity: heroOpacity, scale: heroScale }}
       >
         <div className="hero-background">
+          <div className="hero-image-overlay">
+            <img
+              src={autonomousRobot}
+              alt="Autonomous Vehicle"
+              className="hero-robot-image"
+            />
+          </div>
           <div className="hero-video-overlay">
             {/* Replace src with your autonomous vehicle testing video - add video file to public folder */}
             <video
@@ -79,23 +93,13 @@ export default function DisengagementLogger() {
           <div className="hero-gradient"></div>
         </div>
         <div className="hero-content">
-          <motion.div
-            className="hero-badge"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <span className="badge-pulse"></span>
-            Production System
-          </motion.div>
           <motion.h1
             className="hero-title"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.2 }}
           >
-            Disengagement
-            <span className="title-highlight">Logger</span>
+            Disengagement <span className="title-highlight">Logger</span>
           </motion.h1>
           <motion.p
             className="hero-subtitle"
@@ -307,7 +311,6 @@ export default function DisengagementLogger() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              whileHover={{ scale: 1.05, y: -10 }}
             >
               {/* Dashboard/analytics screenshot - replace with your actual UI */}
               <div className="impact-visual-wrapper">
@@ -317,7 +320,7 @@ export default function DisengagementLogger() {
                   className="impact-visual-image"
                 />
               </div>
-              <div className="impact-icon">🚀</div>
+              <div className="impact-icon"></div>
               <div className="impact-value-large">99.8%</div>
               <div className="impact-metric-large">Time Reduction</div>
               <div className="impact-description-large">5 minutes → 5 seconds</div>
@@ -331,7 +334,6 @@ export default function DisengagementLogger() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                whileHover={{ y: -5 }}
               >
                 <div className="impact-value">90%</div>
                 <div className="impact-label">Accuracy Improvement</div>
@@ -342,7 +344,6 @@ export default function DisengagementLogger() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                whileHover={{ y: -5 }}
               >
                 <div className="impact-value">30%</div>
                 <div className="impact-label">Faster Reaction Time</div>
@@ -353,7 +354,6 @@ export default function DisengagementLogger() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                whileHover={{ y: -5 }}
               >
                 <div className="impact-value">Real-time</div>
                 <div className="impact-label">Analytics Enabled</div>
@@ -412,7 +412,6 @@ export default function DisengagementLogger() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -8, scale: 1.02 }}
               >
                 <div className="card-header">
                   <div className="card-number">{String(index + 1).padStart(2, '0')}</div>
@@ -426,6 +425,7 @@ export default function DisengagementLogger() {
           </div>
         </div>
       </section>
+      </div>
     </div>
   )
 }
