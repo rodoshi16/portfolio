@@ -14,7 +14,7 @@ export default function WorkExperience() {
         transition={{ duration: 0.6 }}
       >
         <div className="section-number">01</div>
-        <h2 className="section-title">Work Experience</h2>
+        <h2 className="section-title">Industry Experience</h2>
         <p className="section-subtitle">Production software for autonomous vehicle systems</p>
       </motion.div>
 

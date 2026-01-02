@@ -43,6 +43,22 @@ export default function Hero() {
                   <span>github.com/rodoshi16</span>
                 </a>
               </div>
+              <div className="hero-metrics-card">
+                <div className="hero-metrics-grid">
+                  <div className="hero-metric-item">
+                    <div className="hero-metric-value">3</div>
+                    <div className="hero-metric-label">Projects Shipped</div>
+                  </div>
+                  <div className="hero-metric-item">
+                    <div className="hero-metric-value">7+</div>
+                    <div className="hero-metric-label">Engineers Impacted</div>
+                  </div>
+                  <div className="hero-metric-item">
+                    <div className="hero-metric-value">90%</div>
+                    <div className="hero-metric-label">Accuracy Improved</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

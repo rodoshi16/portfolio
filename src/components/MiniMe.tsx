@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FaEnvelope, FaGithub, FaLinkedin, FaPaperPlane } from 'react-icons/fa'
+import { FaEnvelope, FaGithub, FaPaperPlane } from 'react-icons/fa'
 import './MiniMe.css'
 
 export default function MiniMe() {
@@ -126,21 +126,6 @@ export default function MiniMe() {
                   <div className="social-info">
                     <div className="social-label">GitHub</div>
                     <div className="social-text">github.com/rodoshi16</div>
-                  </div>
-                </a>
-
-                <a 
-                  href="https://www.linkedin.com/in/rodoshi-mondal-99249126b/" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-link"
-                >
-                  <div className="social-icon linkedin">
-                    <FaLinkedin />
-                  </div>
-                  <div className="social-info">
-                    <div className="social-label">LinkedIn</div>
-                    <div className="social-text">Connect with me</div>
                   </div>
                 </a>
               </div>
