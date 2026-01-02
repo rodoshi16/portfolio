@@ -32,8 +32,8 @@ export default function MiniMe() {
     <div className="mini-me-container">
       <div className="section-header">
         <div className="section-number">06</div>
-        <h2 className="section-title">Get In Touch</h2>
-        <p className="section-subtitle">Let's connect and discuss opportunities</p>
+        <h2 className="section-title">Let's Collaborate</h2>
+        <p className="section-subtitle">If you're interested in getting some reps of DSA problems or working on open source projects together, shoot me a message</p>
       </div>
 
       <div className="contact-wrapper">

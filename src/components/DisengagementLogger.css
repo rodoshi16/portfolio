@@ -948,7 +948,6 @@
     gap: 60px;
   }
   
-  
   .engineering-grid {
     grid-template-columns: 1fr;
   }
@@ -991,7 +990,4 @@
     grid-template-columns: 1fr;
   }
   
-  .engineering-grid {
-    grid-template-columns: 1fr;
-  }
 }
