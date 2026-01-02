@@ -18,103 +18,121 @@
 .anime-figurine {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.4));
 }
 
-.figurine-background-glow {
-  fill: rgba(0, 212, 255, 0.08);
-  filter: blur(20px);
+.bg-glow {
+  filter: blur(25px);
+  opacity: 0.6;
 }
 
-.figurine-head {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+.hair-main {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
 }
 
-.figurine-hair {
+.head {
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
 }
 
-.figurine-eye {
+.eye {
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5));
   animation: blink 4s infinite;
 }
 
 @keyframes blink {
   0%, 90%, 100% {
     transform: scaleY(1);
+    transform-origin: center;
   }
   92%, 97% {
     transform: scaleY(0.1);
+    transform-origin: center;
   }
 }
 
-.figurine-body {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+.body {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
 }
 
-.figurine-arm {
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+.arm {
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
 }
 
-.figurine-leg {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+.leg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
-.figurine-shoe {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+.shoe {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
 }
 
 /* Orb styling */
 .orb-group {
-  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.6));
+  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.7));
 }
 
 .orb-outer {
-  fill: rgba(0, 212, 255, 0.3);
-  filter: blur(8px);
+  filter: blur(10px);
 }
 
 .orb-middle {
-  fill: rgba(0, 212, 255, 0.4);
-  filter: blur(5px);
+  filter: blur(6px);
 }
 
 .orb-core {
-  fill: url(#orbGradient);
-  filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.8));
+  filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.9));
   animation: orbRotate 4s linear infinite;
+  transform-origin: 65px 160px;
 }
 
 .orb-shine {
-  fill: rgba(255, 255, 255, 0.7);
   filter: blur(1px);
+  animation: orbShineRotate 4s linear infinite;
+  transform-origin: 65px 160px;
 }
 
 @keyframes orbRotate {
   from {
     transform: rotate(0deg);
-    transform-origin: 68px 158px;
   }
   to {
     transform: rotate(360deg);
-    transform-origin: 68px 158px;
+  }
+}
+
+@keyframes orbShineRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
   }
 }
 
 /* Small size adjustments */
 .anime-figurine-container.small .anime-figurine {
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
 }
 
-.anime-figurine-container.small .figurine-background-glow {
-  opacity: 0.5;
+.anime-figurine-container.small .bg-glow {
+  opacity: 0.4;
 }
 
+.anime-figurine-container.small .orb-group {
+  transform: scale(0.5);
+  transform-origin: 65px 160px;
+}
+
+/* Hover effects */
 .anime-figurine-container.large:hover .anime-figurine {
   transform: scale(1.05);
   transition: transform 0.3s ease;
 }
 
 .anime-figurine-container.large:hover .orb-group {
-  filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.8));
+  filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.9));
 }
 
+.anime-figurine-container.large:hover .hair-main {
+  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.5));
+}
