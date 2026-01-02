@@ -11,13 +11,22 @@ export default function Hero() {
     offset: ['start start', 'end start']
   })
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const y = useTransform(scrollYProgress, [0, 0.5], [0, -50])
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.6], [1, 0.95])
+
+  const highlights = [
+    'Former Software Engineer Intern @Magna International',
+    '2x Hackathon Winner',
+    '3D printed prosthetic project featured on Global News',
+    'Built and shipped software impacting 7+ engineers, boosting data accuracy and operational efficiency',
+    'Mentored students at Hackathons and Coding workshops',
+    'Leadership: Project Lead @Engineers Without Borders, Mentor @WISE, Externals Associate @IEEE_UofT, Residence Don @UofT'
+  ]
 
   return (
     <div ref={containerRef} className="hero-container">
-      {/* Subtle background video */}
-      <div className="hero-background">
+      {/* Impressive Background - NYC/Quant Vibes */}
+      <div className="hero-video-background">
         <video
           className="hero-video"
           autoPlay
@@ -26,17 +35,20 @@ export default function Hero() {
           playsInline
           preload="auto"
         >
+          {/* Replace with NYC cityscape or quant/finance themed video */}
+          <source src="https://videos.pexels.com/video-files/2491284/2491284-sd_640_360_30fps.mp4" type="video/mp4" />
+          {/* Fallback to another city video */}
           <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
         </video>
         <div className="video-overlay"></div>
       </div>
 
-      <motion.div 
+      <motion.div
         className="hero-content"
-        style={{ opacity, y }}
+        style={{ opacity, scale }}
       >
         <div className="hero-layout">
-          {/* Left: Photo */}
+          {/* Left: Photo - Clean, No Glow */}
           <motion.div
             className="hero-photo-section"
             initial={{ opacity: 0, x: -30 }}
@@ -74,26 +86,29 @@ export default function Hero() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             >
-              Building production software for autonomous vehicle systems at scale
+              Building production systems for <span className="tagline-highlight">autonomous vehicles</span>
             </motion.p>
 
+            {/* Clean Highlights Section */}
             <motion.div
-              className="hero-stats"
+              className="hero-highlights"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
+              transition={{ delay: 0.7, duration: 0.8 }}
             >
-              <div className="stat">
-                <div className="stat-value">3</div>
-                <div className="stat-label">Projects Shipped</div>
-              </div>
-              <div className="stat">
-                <div className="stat-value">99.8%</div>
-                <div className="stat-label">Time Reduction</div>
-              </div>
-              <div className="stat">
-                <div className="stat-value">7+</div>
-                <div className="stat-label">Engineers Impacted</div>
+              <div className="highlights-label">Highlights</div>
+              <div className="highlights-grid">
+                {highlights.map((highlight, index) => (
+                  <motion.div
+                    key={index}
+                    className="highlight-item"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 + index * 0.05, duration: 0.5 }}
+                  >
+                    {highlight}
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
 
@@ -101,7 +116,7 @@ export default function Hero() {
               className="hero-actions"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.7, duration: 0.8 }}
+              transition={{ delay: 1.1, duration: 0.8 }}
             >
               <Link to="/magna-experience" className="primary-button">
                 View Work Experience →

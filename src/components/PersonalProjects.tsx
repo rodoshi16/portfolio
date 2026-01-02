@@ -1,29 +1,34 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
-import { FaGithub, FaMapMarkerAlt, FaCode, FaRocket } from 'react-icons/fa'
+import foodbridgeImage from '../assets/foodbridge.jpeg'
+import fraudiqImage from '../assets/fraudiq.jpeg'
+import mindmateImage from '../assets/mindmate.jpeg'
 import './PersonalProjects.css'
 
 const projects = [
   {
+    name: 'FraudIQ',
+    date: 'March 2024',
+    image: fraudiqImage,
+    description: 'Machine Learning Risk Analysis Tool',
+    link: 'https://github.com/rodoshi16/FraudIQ---ML'
+  },
+  {
+    name: 'MindMate',
+    date: 'December 2024',
+    image: mindmateImage,
+    description: 'AI Chatbot with Sentiment Analysis',
+    link: 'https://github.com/rodoshi16/MentalHealthApp'
+  },
+  {
     name: 'FoodBridge',
-    tagline: 'Geolocation-Based Food Bank Locator',
-    description: 'A responsive web application that helps users locate nearby food banks based on their geolocation, improving accessibility to essential resources.',
-    problem: 'Finding nearby food banks was difficult and time-consuming, especially for those in need.',
-    solution: 'Built a full-stack application with Google Maps API integration, real-time geolocation, and optimized backend queries.',
-    tech: ['Java', 'Spring Boot', 'React', 'Google Maps API', 'REST API'],
-    metrics: [
-      { label: 'Query Response', value: '20%', description: 'Faster' },
-      { label: 'Accessibility', value: '↑', description: 'Improved' },
-    ],
-    github: 'https://github.com/rodoshi16/google-maps-demo',
-    year: 'Dec 2024',
-    icon: <FaMapMarkerAlt />
+    date: 'December 2024',
+    image: foodbridgeImage,
+    description: 'Geolocation Based FoodBank Locator',
+    link: 'https://github.com/rodoshi16/foodbridge-backend'
   }
 ]
 
 export default function PersonalProjects() {
-  const [selectedProject, setSelectedProject] = useState(0)
-
   return (
     <div className="personal-projects-container">
       <motion.div
@@ -33,80 +38,36 @@ export default function PersonalProjects() {
         viewport={{ once: true, margin: '-100px' }}
         transition={{ duration: 0.6 }}
       >
-        <div className="section-number">02</div>
+        <div className="section-number">03</div>
         <h2 className="section-title">Personal Projects</h2>
-        <p className="section-subtitle">Building solutions that make a difference</p>
+        <p className="section-subtitle">Full-stack applications built from scratch</p>
       </motion.div>
 
-      <div className="projects-showcase">
+      <div className="projects-grid">
         {projects.map((project, index) => (
-          <motion.div
+          <motion.a
             key={index}
-            className="project-showcase-card"
-            initial={{ opacity: 0, y: 30 }}
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-card"
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ delay: index * 0.1, duration: 0.6 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ delay: index * 0.15, duration: 0.8 }}
           >
-            <div className="project-header-section">
-              <div className="project-icon-wrapper">
-                <div className="project-icon">{project.icon}</div>
-              </div>
-              <div className="project-meta-info">
-                <div className="project-year">{project.year}</div>
-                <h3 className="project-name">{project.name}</h3>
-                <div className="project-tagline">{project.tagline}</div>
-              </div>
+            <div className="project-image-wrapper">
+              <img
+                src={project.image}
+                alt={project.name}
+                className="project-image"
+              />
             </div>
-
-            <div className="project-content-section">
-              <div className="content-block">
-                <div className="block-label">Problem</div>
-                <p className="block-text">{project.problem}</p>
-              </div>
-
-              <div className="content-block">
-                <div className="block-label">Solution</div>
-                <p className="block-text">{project.solution}</p>
-              </div>
-
-              <div className="project-tech-section">
-                <div className="tech-label">Technologies</div>
-                <div className="tech-grid">
-                  {project.tech.map((tech, i) => (
-                    <div key={i} className="tech-item">
-                      <FaCode className="tech-icon" />
-                      <span>{tech}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="metrics-section">
-                {project.metrics.map((metric, i) => (
-                  <div key={i} className="metric-item">
-                    <div className="metric-value">{metric.value}</div>
-                    <div className="metric-info">
-                      <div className="metric-label">{metric.label}</div>
-                      <div className="metric-desc">{metric.description}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="project-actions">
-                <a 
-                  href={project.github} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="action-link"
-                >
-                  <FaGithub />
-                  <span>View Code</span>
-                </a>
-              </div>
+            <div className="project-info">
+              <div className="project-name">{project.name}</div>
+              <div className="project-date">{project.date}</div>
             </div>
-          </motion.div>
+          </motion.a>
         ))}
       </div>
     </div>

@@ -42,11 +42,11 @@ export default function Home() {
         <section id="work-experience">
           <WorkExperience />
         </section>
-        <section id="personal-projects">
-          <PersonalProjects />
-        </section>
         <section id="hackathon-projects">
           <HackathonProjects />
+        </section>
+        <section id="personal-projects">
+          <PersonalProjects />
         </section>
         <section id="leadership">
           <Leadership />
