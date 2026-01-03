@@ -5,10 +5,10 @@ import './Volunteering.css'
 const featuredProject = {
   title: '3D Printed Prosthetics Project',
   organization: 'Enable Toronto',
-  description: 'Led a team that 3D printed 10 prosthetic hands for differently abled individuals with upper hand amputations in Afghanistan. The project was featured on Global News for its humanitarian impact.',
+  description: 'At Enable, my team and I 3D printed 10 prosthetic hands for differently abled individuals with upper hand amputation in Afghanistan. The project was featured on Global News for its humanitarian impact.',
   image: enableImage,
   videoLink: 'https://globalnews.ca/video/9801713/durham-region-students-lend-helping-hand-using-3-d-printer/',
-  impact: '10 prosthetics shipped to hospital in Afghanistan'
+  impact: '10 prosthetics shipped to a hospital in Afghanistan'
 }
 
 export default function Volunteering() {
