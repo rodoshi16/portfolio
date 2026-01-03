@@ -3,6 +3,8 @@ import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 // @ts-ignore
 import autonomousRobot from '../assets/Autonomous robot.png'
+// @ts-ignore
+import teleopsImage from '../assets/teleops.jpeg'
 import './DisengagementLogger.css'
 
 export default function DisengagementLogger() {
@@ -124,13 +126,19 @@ export default function DisengagementLogger() {
             animate={{ height: ['0%', '100%', '0%'] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           />
-          <span>Scroll to explore</span>
+          <span></span>
         </div>
       </motion.div>
 
       {/* The Why - Problem Statement with Visual Story */}
       <section className="story-section why-section">
-        <div className="section-container">
+        <div 
+          className="teleops-bg-layer"
+          style={{
+            backgroundImage: `url(${teleopsImage})`,
+          }}
+        ></div>
+        <div className="section-container teleops-overlay-content">
           <motion.div
             className="section-number-badge"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -152,34 +160,8 @@ export default function DisengagementLogger() {
           
           <div className="problem-visualization">
             <motion.div
-              className="problem-timeline"
-              initial={{ opacity: 0, x: -100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-            >
-              <div className="timeline-item old-way">
-                <div className="timeline-marker old"></div>
-                <div className="timeline-content">
-                  <div className="timeline-label">Before</div>
-                  <div className="timeline-time">5 minutes</div>
-                  <div className="timeline-description">Manual Excel logging</div>
-                </div>
-              </div>
-              <div className="timeline-line"></div>
-              <div className="timeline-item new-way">
-                <div className="timeline-marker new"></div>
-                <div className="timeline-content">
-                  <div className="timeline-label">After</div>
-                  <div className="timeline-time">5 seconds</div>
-                  <div className="timeline-description">Automated system</div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
               className="problem-text-content"
-              initial={{ opacity: 0, x: 100 }}
+              initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.2 }}
@@ -201,6 +183,24 @@ export default function DisengagementLogger() {
                   <div className="pain-text">No way to analyze data in real-time</div>
                 </div>
               </div>
+              
+              <motion.div
+                className="problem-timeline-compact"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <div className="timeline-compact-item">
+                  <div className="timeline-compact-label">Before</div>
+                  <div className="timeline-compact-time old">5 minutes</div>
+                </div>
+                <div className="timeline-compact-arrow">→</div>
+                <div className="timeline-compact-item">
+                  <div className="timeline-compact-label">After</div>
+                  <div className="timeline-compact-time new">5 seconds</div>
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>

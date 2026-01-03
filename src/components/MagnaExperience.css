@@ -198,7 +198,8 @@
 .feedback-section {
   display: flex;
   flex-direction: column;
-  gap: 64px;
+  gap: 80px;
+  margin-top: 20px;
 }
 
 .feedback-section-title {
@@ -211,13 +212,14 @@
 
 /* Overall Comments */
 .feedback-overall-section {
-  background: rgba(15, 15, 15, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 15, 15, 0.7);
+  border: 2px solid rgba(255, 255, 255, 0.15);
   border-radius: 16px;
-  padding: 48px;
+  padding: 56px 56px;
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 .feedback-overall-section::before {
@@ -225,23 +227,32 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 4px;
+  width: 5px;
   height: 100%;
-  background: linear-gradient(180deg, #00d4ff, transparent);
+  background: linear-gradient(180deg, #00d4ff, rgba(0, 212, 255, 0.4));
+  border-radius: 16px 0 0 16px;
+}
+
+.feedback-overall-section .feedback-section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #f5f5f7;
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
 }
 
 .feedback-quote {
   position: relative;
-  padding-left: 24px;
+  padding-left: 32px;
 }
 
 .quote-mark {
   position: absolute;
-  left: -8px;
-  top: -16px;
-  font-size: 80px;
+  left: -12px;
+  top: -24px;
+  font-size: 100px;
   font-weight: 300;
-  color: rgba(0, 212, 255, 0.2);
+  color: rgba(0, 212, 255, 0.25);
   line-height: 1;
   font-family: Georgia, serif;
 }
@@ -262,28 +273,38 @@
   flex-direction: column;
 }
 
+.feedback-strengths-section .feedback-section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #f5f5f7;
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
+}
+
 .strengths-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
+  gap: 20px;
 }
 
 .strength-card {
-  background: rgba(0, 212, 255, 0.05);
-  border: 1px solid rgba(0, 212, 255, 0.15);
+  background: rgba(0, 212, 255, 0.08);
+  border: 2px solid rgba(0, 212, 255, 0.2);
   border-radius: 12px;
-  padding: 24px;
+  padding: 28px;
   display: flex;
   align-items: flex-start;
   gap: 16px;
   transition: all 0.3s ease;
   cursor: default;
+  box-shadow: 0 4px 16px rgba(0, 212, 255, 0.05);
 }
 
 .strength-card:hover {
-  background: rgba(0, 212, 255, 0.08);
-  border-color: rgba(0, 212, 255, 0.3);
-  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.1);
+  background: rgba(0, 212, 255, 0.12);
+  border-color: rgba(0, 212, 255, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.15);
+  transform: translateY(-2px);
 }
 
 .strength-icon {
@@ -335,11 +356,29 @@
   }
   
   .feedback-overall-section {
-    padding: 32px 24px;
+    padding: 48px 32px;
+  }
+  
+  .feedback-overall-section .feedback-section-title {
+    margin-bottom: 24px;
   }
   
   .feedback-text {
     font-size: 18px;
+  }
+  
+  .quote-mark {
+    font-size: 80px;
+    top: -16px;
+    left: -8px;
+  }
+  
+  .feedback-quote {
+    padding-left: 24px;
+  }
+  
+  .feedback-strengths-section .feedback-section-title {
+    margin-bottom: 24px;
   }
   
   .strengths-grid {
@@ -348,11 +387,6 @@
   
   .strength-card {
     padding: 20px;
-  }
-  
-  .quote-mark {
-    font-size: 60px;
-    top: -12px;
   }
 }
 

@@ -22,14 +22,13 @@ export default function Hero() {
               <h1 className="hero-name">Hi, this is <span className="name-highlight">Rodoshi</span></h1>
               
               <div className="hero-education">
-                Computer Science Specialist @ University of Toronto (2023 - 2027)
+                Computer Science Specialist @ University of Toronto (Sep 2023 - Apr 2027)
               </div>
 
               <div className="hero-bio">
                 <p>
-                  I'm a software engineer passionate about building systems that solve real problems. 
-                  From autonomous vehicles to hackathon-winning AI projects, I thrive on the intersection of 
-                  technical excellence and meaningful impact.
+                  I am an aspiring engineer with experience designing and deploying production grade software in the industry with a focus on correctness, performance and reliability under real world constraints. I am currently building depth in backend systems, infrastructure and algorithmic problem solving. 
+
                 </p>
               </div>
 

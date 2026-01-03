@@ -18,6 +18,21 @@ export default function MagnaExperience() {
     'Developed the frontend of an Android mobile app for 7+ Magna engineers, enabling schedule sync via game pins, role selection, and pickup/drop-off tracking on maps, enhancing user engagement for autonomous robot testing.'
   ]
 
+  // Function to bold numbers in text
+  const boldNumbers = (text: string) => {
+    // Match numbers with optional + or %, or time phrases like "5 minutes", "5 seconds"
+    // Using capturing group so split includes the matches
+    const parts = text.split(/(\d+\+?%?|\d+\s*(?:minutes?|seconds?|hours?|days?))/gi)
+    
+    return parts.map((part, index) => {
+      // Check if part is a number (matches the regex)
+      if (/\d/.test(part)) {
+        return <strong key={index}>{part}</strong>
+      }
+      return part
+    })
+  }
+
   const skills = ['Node.js', 'Express', 'TypeScript', 'React.js', 'React Native', 'Azure', 'BigQuery']
 
   // Manager feedback content - replace with actual text from your feedback
@@ -60,7 +75,7 @@ export default function MagnaExperience() {
           <ul className="bullets-list">
             {bullets.map((bullet, index) => (
               <li key={index} className="bullet-item">
-                {bullet}
+                {boldNumbers(bullet)}
               </li>
             ))}
           </ul>
@@ -89,7 +104,7 @@ export default function MagnaExperience() {
           
           {/* Overall Comments */}
           <div className="feedback-overall-section">
-            <div className="feedback-section-title">Supervisior's overall comments</div>
+            <div className="feedback-section-title">Supervisor's Overall Comments</div>
             <div className="feedback-quote">
               <div className="quote-mark">"</div>
               <p className="feedback-text">{overallComments}</p>
