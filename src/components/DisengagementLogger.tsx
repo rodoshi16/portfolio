@@ -25,33 +25,33 @@ export default function DisengagementLogger() {
   const engineeringQuestions = [
     {
       question: 'System Architecture',
-      answer: 'Built a client-server, event-driven architecture using React + TypeScript frontend and Node.js + Express backend. Implemented Azure MSAL SSO for authentication, with a BigQuery-based cloud data layer for real-time logging. The system follows a stateless API design, enabling horizontal scaling and high availability. Session-based workflows allow for unlimited disengagements per trip, with optimistic UI updates and eventual consistency for offline resilience.',
+      answer: 'Client-server, event-driven architecture which follows a stateless API design.',
       icon: '🏗️'
     },
     {
-      question: 'Complexity & Performance',
-      answer: 'Time complexity: O(1) for disengagement logging operations with indexed database queries. Space complexity: O(n) where n is the number of active sessions, optimized with session cleanup and data archival strategies. Average API response time: <100ms for logging operations, <200ms for session retrieval. Implemented debouncing and request batching to minimize network overhead during rapid user interactions.',
+      question: 'Complexity',
+      answer: 'Focused on low architectural complexity rather than algorithmic complexity. Used Feature-Sliced Design to separate UI, business logic, and data access. Modular structure makes features easy to add without touching unrelated code.',
       icon: '⚡'
     },
     {
-      question: 'Memory & Latency Optimization',
-      answer: 'Client-side state management using React Context API with memoization to prevent unnecessary re-renders. Implemented virtual scrolling for large data sets. Backend uses connection pooling and query optimization with indexed database schemas. Reduced initial load time by 60% through code splitting and lazy loading. Implemented Redis caching for frequently accessed session data, reducing database load by 40%.',
+      question: 'Memory',
+      answer: 'Kept client-side state minimal and short-lived. Only stored data needed for the current UI step. Cleared state after submission; no client-side caching of historical data.',
       icon: '🚀'
     },
     {
-      question: 'Tradeoffs & Design Decisions',
-      answer: 'Chose event-driven over request-response pattern for better scalability and decoupling. Prioritized eventual consistency over strong consistency for better performance - acceptable since disengagement data doesn\'t require real-time synchronization across all clients. Selected BigQuery over traditional SQL for better analytical query performance and cost efficiency at scale. Tradeoff: slightly higher write latency for significantly better read performance and analytical capabilities.',
+      question: 'Latency',
+      answer: 'Optimized for immediate UI responsiveness in a safety-critical environment. Frontend validation prepares data before submission. Events sent asynchronously to backend for near-instant logging.',
+      icon: '⏱️'
+    },
+    {
+      question: 'Tradeoffs',
+      answer: 'Prioritized simplicity and reliability over massive scalability. Designed for a limited number of concurrent operators. Avoided unnecessary infrastructure to keep deployment and maintenance simple.',
       icon: '⚖️'
     },
     {
-      question: 'Behavior Under Extreme Load',
-      answer: 'System handles 1000+ concurrent users through horizontal scaling of stateless backend services. Implemented rate limiting (100 requests/minute per user) to prevent abuse. Database connection pooling handles connection spikes. Used message queues for asynchronous processing of analytics events. Circuit breaker pattern prevents cascading failures. Auto-scaling configuration scales infrastructure based on CPU/memory metrics. Graceful degradation: if BigQuery is down, logs are buffered locally and synced when service recovers.',
+      question: 'Behavior Under Load',
+      answer: 'UI remains responsive due to local event handling. Backend may experience higher latency with increased concurrent writes. Can be extended with event streaming to decouple ingestion from storage.',
       icon: '🔥'
-    },
-    {
-      question: 'Scaling to 100x Users',
-      answer: 'Horizontal scaling: deploy multiple backend instances behind load balancer. Database: migrate to BigQuery partitioned tables by date for better query performance. Implement read replicas for analytics queries. Caching layer: Redis cluster for distributed session caching. CDN for static assets. Microservices: split analytics processing into separate service for independent scaling. Data pipeline: implement Kafka for real-time event streaming. Monitoring: comprehensive observability with distributed tracing, metrics, and alerting. Estimated infrastructure cost increase: 80x (not linear due to economies of scale).',
-      icon: '📈'
     }
   ]
 
@@ -167,40 +167,31 @@ export default function DisengagementLogger() {
               transition={{ duration: 1, delay: 0.2 }}
             >
               <p className="story-text-large">
-                During live self-driving vehicle testing, engineers manually logged critical data points into Excel spreadsheets—a process that created bottlenecks and introduced errors at a critical stage of development.
+                The team was required to report autonomous driving disengagements to the Ministry of Transportation every month.
               </p>
-              <div className="problem-pain-points">
+              <p className="story-text-large" style={{ marginTop: '24px' }}>
+                At the time, disengagements were logged after the fact, based on operator memory.
+              </p>
+              <p className="story-text-large" style={{ marginTop: '24px' }}>
+                Teleoperators were under pressure during disengagements, so manual note-taking in the moment was unrealistic.
+              </p>
+              <p className="story-text-large" style={{ marginTop: '32px', fontWeight: '600' }}>
+                As a result:
+              </p>
+              <div className="problem-pain-points" style={{ marginTop: '24px' }}>
+                <div className="pain-point">
+                  <div className="pain-icon">📉</div>
+                  <div className="pain-text">Data accuracy was low</div>
+                </div>
                 <div className="pain-point">
                   <div className="pain-icon">⚠️</div>
-                  <div className="pain-text">Manual data entry introduced human error</div>
+                  <div className="pain-text">Key details like time, location, and cause were often missing or incorrect</div>
                 </div>
                 <div className="pain-point">
-                  <div className="pain-icon">⏱️</div>
-                  <div className="pain-text">Time-intensive logging slowed down testing cycles</div>
-                </div>
-                <div className="pain-point">
-                  <div className="pain-icon">📊</div>
-                  <div className="pain-text">No way to analyze data in real-time</div>
+                  <div className="pain-icon">🔄</div>
+                  <div className="pain-text">Engineers and managers had to manually chase information, creating operational backlog</div>
                 </div>
               </div>
-              
-              <motion.div
-                className="problem-timeline-compact"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                <div className="timeline-compact-item">
-                  <div className="timeline-compact-label">Before</div>
-                  <div className="timeline-compact-time old">5 minutes</div>
-                </div>
-                <div className="timeline-compact-arrow">→</div>
-                <div className="timeline-compact-item">
-                  <div className="timeline-compact-label">After</div>
-                  <div className="timeline-compact-time new">5 seconds</div>
-                </div>
-              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -239,19 +230,19 @@ export default function DisengagementLogger() {
               <div className="arch-layer frontend">
                 <div className="layer-label">Frontend</div>
                 <div className="layer-tech">React + TypeScript</div>
-                <div className="layer-description">Safety-first UI design</div>
+                <div className="layer-description"></div>
               </div>
               <div className="arch-arrow">↓</div>
               <div className="arch-layer backend">
                 <div className="layer-label">Backend</div>
                 <div className="layer-tech">Node.js + Express</div>
-                <div className="layer-description">RESTful API</div>
+                <div className="layer-description"></div>
               </div>
               <div className="arch-arrow">↓</div>
               <div className="arch-layer database">
                 <div className="layer-label">Data Layer</div>
                 <div className="layer-tech">BigQuery</div>
-                <div className="layer-description">Real-time analytics</div>
+                <div className="layer-description"></div>
               </div>
             </motion.div>
 
@@ -265,7 +256,7 @@ export default function DisengagementLogger() {
               <div className="feature-card">
                 <div className="feature-icon">🔐</div>
                 <h3 className="feature-title">Azure MSAL SSO</h3>
-                <p className="feature-description">Enterprise-grade authentication</p>
+                <p className="feature-description">Authentication</p>
               </div>
               <div className="feature-card">
                 <div className="feature-icon">📦</div>
@@ -274,8 +265,8 @@ export default function DisengagementLogger() {
               </div>
               <div className="feature-card">
                 <div className="feature-icon">⚡</div>
-                <h3 className="feature-title">Optimistic UI</h3>
-                <p className="feature-description">Instant feedback, eventual consistency</p>
+                <h3 className="feature-title">User friendly UI</h3>
+                <p className="feature-description">Designed with bigger buttons and icons for faster reaction time</p>
               </div>
             </motion.div>
           </div>
@@ -306,13 +297,12 @@ export default function DisengagementLogger() {
 
           <div className="impact-showcase">
             <motion.div
-              className="impact-card-large primary"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              className="impact-facts-box"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
             >
-              {/* Dashboard/analytics screenshot - replace with your actual UI */}
               <div className="impact-visual-wrapper">
                 <img
                   src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
@@ -320,43 +310,38 @@ export default function DisengagementLogger() {
                   className="impact-visual-image"
                 />
               </div>
-              <div className="impact-icon"></div>
-              <div className="impact-value-large">99.8%</div>
-              <div className="impact-metric-large">Time Reduction</div>
-              <div className="impact-description-large">5 minutes → 5 seconds</div>
-              <div className="impact-glow"></div>
+              <div className="facts-box-content">
+                <div className="impact-achievement-item">
+                  <div className="achievement-icon">✓</div>
+                  <div className="achievement-text">Eliminated Excel workflows</div>
+                </div>
+                <div className="impact-achievement-item">
+                  <div className="achievement-icon">✓</div>
+                  <div className="achievement-text">Increased operational efficiency</div>
+                </div>
+              </div>
             </motion.div>
-
-            <div className="impact-grid-small">
+            <div className="impact-metrics-grid">
               <motion.div
-                className="impact-card-small"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              >
-                <div className="impact-value">90%</div>
-                <div className="impact-label">Accuracy Improvement</div>
-              </motion.div>
-              <motion.div
-                className="impact-card-small"
+                className="impact-card-metric"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <div className="impact-value">30%</div>
-                <div className="impact-label">Faster Reaction Time</div>
+                <div className="impact-value-large">98.3%</div>
+                <div className="impact-metric-large">Time Reduction</div>
+                <div className="impact-description-large">5 minutes → 5 seconds</div>
               </motion.div>
               <motion.div
-                className="impact-card-small"
+                className="impact-card-metric"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                <div className="impact-value">Real-time</div>
-                <div className="impact-label">Analytics Enabled</div>
+                <div className="impact-value-large">90%</div>
+                <div className="impact-metric-large">Accuracy Improvement</div>
               </motion.div>
             </div>
           </div>
