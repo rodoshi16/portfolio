@@ -37,11 +37,11 @@ export default function Home() {
       <Navigation activeSection={activeSection} />
       <main>
         <section id="hero">
-          <Hero />
-        </section>
-        <section id="work-experience">
-          <WorkExperience />
-        </section>
+        <Hero />
+      </section>
+      <section id="work-experience">
+        <WorkExperience />
+      </section>
         <section id="hackathon-projects">
           <HackathonProjects />
         </section>
