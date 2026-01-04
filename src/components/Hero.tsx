@@ -27,7 +27,7 @@ export default function Hero() {
 
               <div className="hero-bio">
                 <p>
-                  I am an aspiring engineer with experience designing and deploying production grade software in the industry with a focus on correctness, performance and reliability under real world constraints. I am currently building depth in backend systems, infrastructure and algorithmic problem solving. 
+                I’m a Computer Science Specialist at the University of Toronto with industry experience designing and deploying systems where correctness, latency, and data integrity matter. My work has supported autonomous vehicle testing, reduced operator error under pressure, and improved decision-making through reliable infrastructure. I’m currently deepening my skills in backend systems, infrastructure, and algorithmic problem-solving, with a focus on building software that behaves predictably under real operational constraints.
 
                 </p>
               </div>

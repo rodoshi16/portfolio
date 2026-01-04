@@ -155,7 +155,7 @@ export default function DisengagementLogger() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            The Why
+            Problem Context
           </motion.h2>
           
           <div className="problem-visualization">
